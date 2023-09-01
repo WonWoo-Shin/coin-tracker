@@ -1,44 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { styled } from "styled-components";
-
-const Container = styled.div`
-  padding: 0px 20px;
-  max-width: 480px;
-  margin: 0 auto;
-`;
-
-const Header = styled.header`
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CoinsList = styled.ul``;
-
-const Coin = styled.li`
-  background-color: ${(props) => props.theme.textColor};
-  color: ${(props) => props.theme.bgColor};
-  margin-bottom: 10px;
-  border-radius: 15px;
-  a {
-    padding: 20px;
-    display: block;
-    transition: color 0.2s ease-in-out;
-  }
-  &:hover {
-    a {
-      color: ${(props) => props.theme.accentColor};
-    }
-  }
-`;
-
-const Title = styled.h1`
-  color: ${(props) => props.theme.accentColor};
-  font-size: 48px;
-`;
+import { Coin, CoinsList, Container, Header, Title } from "../style";
 
 interface CoinInterface {
   id: string;
@@ -73,7 +36,17 @@ function Coins() {
         <CoinsList>
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+              <Link
+                to={{
+                  pathname: `/${coin.id}`,
+                  state: { name: coin.name },
+                }}
+              >
+                <img
+                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                />{" "}
+                {coin.name} &rarr;
+              </Link>
             </Coin>
           ))}
         </CoinsList>

@@ -1,6 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
 import { Container, Header, Title } from "../style";
 import { useState } from "react";
+import Loading from "../components/Loading";
 
 interface CoinParams {
   coinId: string;
@@ -19,7 +20,7 @@ function Coin() {
       <Header>
         <Title>{state?.name || "Loading"}</Title>
       </Header>
-      {isLoading ? <h1>Loading...</h1> : null}
+      {isLoading ? <Loading /> : null}
     </Container>
   );
 }

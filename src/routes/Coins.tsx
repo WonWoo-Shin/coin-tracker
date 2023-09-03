@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Coin, CoinsList, Container, Header, Title } from "../style";
+import Loading from "../components/Loading";
 
 interface CoinInterface {
   id: string;
@@ -31,7 +32,7 @@ function Coins() {
         <Title>Coins</Title>
       </Header>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <Loading />
       ) : (
         <CoinsList>
           {coins.map((coin) => (

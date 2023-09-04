@@ -1,13 +1,13 @@
-import { LoadingBox, LoaingCircle } from "../style";
+import { LoadingContanier, LoaingCircle } from "../style";
 
 function Loading() {
   return (
-    <LoadingBox>
+    <LoadingContanier>
       <LoaingCircle>
-        <div></div>
-        <div></div>
+        <div />
+        <div />
       </LoaingCircle>
-    </LoadingBox>
+    </LoadingContanier>
   );
 }
 

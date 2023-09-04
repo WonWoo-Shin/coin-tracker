@@ -18,9 +18,10 @@ function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const fetchCoins = async () => {
-    const response = await axios.get("https://api.coinpaprika.com/v1/coins");
-    const { data } = response;
-    setCoins(data.slice(0, 100));
+    const response = await (
+      await fetch("https://api.coinpaprika.com/v1/coins")
+    ).json();
+    setCoins(response.slice(0, 100));
     setIsLoading(false);
   };
   useEffect(() => {
@@ -44,7 +45,7 @@ function Coins() {
                 }}
               >
                 <img
-                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
                 />{" "}
                 {coin.name} &rarr;
               </Link>

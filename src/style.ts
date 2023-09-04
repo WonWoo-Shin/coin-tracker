@@ -18,7 +18,7 @@ export const Title = styled.h1`
   font-size: 48px;
 `;
 
-export const LoadingBox = styled.div`
+export const LoadingContanier = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 50px;
@@ -34,8 +34,8 @@ const loadingRotate = keyframes`
 `;
 
 export const LoaingCircle = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   background-color: ${(props) => props.theme.textColor};
   border-radius: 50%;
   position: relative;
@@ -66,20 +66,22 @@ export const CoinsList = styled.ul``;
 export const Coin = styled.li`
   background-color: ${(props) => props.theme.textColor};
   color: ${(props) => props.theme.bgColor};
-  margin-bottom: 10px;
-  border-radius: 15px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  transition: all 0.1s ease-in-out;
   a {
     padding: 20px;
     display: flex;
     align-items: center;
-    transition: color 0.2s ease-in-out;
+    transition: color 0.1s ease-in-out;
   }
   img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin-right: 15px;
   }
   &:hover {
+    transform: scale(103%);
     a {
       color: ${(props) => props.theme.accentColor};
     }

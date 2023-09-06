@@ -143,19 +143,19 @@ function Coin() {
             </div>
           </Overview>
           <Tabs>
-            <Tab isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>PRICE</Link>
-            </Tab>
-            <Tab isActive={chartMatch !== null}>
+            <Tab $isActive={chartMatch !== null}>
               <Link to={`/${coinId}/chart`}>CHART</Link>
+            </Tab>
+            <Tab $isActive={priceMatch !== null}>
+              <Link to={`/${coinId}/price`}>PRICE</Link>
             </Tab>
           </Tabs>
           <Switch>
-            <Route path={"/:coinId/price"}>
-              <Price />
-            </Route>
             <Route path={"/:coinId/chart"}>
               <Chart />
+            </Route>
+            <Route path={"/:coinId/price"}>
+              <Price />
             </Route>
           </Switch>
         </>

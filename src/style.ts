@@ -68,7 +68,7 @@ export const Coin = styled.li`
   color: ${(props) => props.theme.bgColor};
   margin-bottom: 20px;
   border-radius: 20px;
-  transition: all 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
   a {
     padding: 20px;
     display: flex;
@@ -85,5 +85,59 @@ export const Coin = styled.li`
     a {
       color: ${(props) => props.theme.accentColor};
     }
+  }
+`;
+
+export const Overview = styled.div`
+  background-color: #1e272e;
+  border-radius: 15px;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  div {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      &:first-child {
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      &:last-child {
+        font-size: 18px;
+        font-weight: 600;
+        color: ${(props) => props.theme.accentColor};
+      }
+    }
+  }
+`;
+
+export const Description = styled.p`
+  margin-top: 20px;
+  padding: 0 10px;
+  line-height: 25px;
+  font-size: 18px;
+`;
+
+export const Tabs = styled.div`
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const Tab = styled.div<{ isActive: boolean }>`
+  background-color: ${(props) =>
+    props.isActive ? props.theme.accentColor : "#1e272e"};
+  border-radius: 15px;
+  transition: transform 0.1s ease-in-out;
+  &:hover {
+    transform: scale(103%);
+  }
+  a {
+    display: block;
+    padding: 10px 50px;
   }
 `;

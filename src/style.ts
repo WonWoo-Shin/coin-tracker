@@ -68,11 +68,33 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 export const Title = styled.h1`
   color: ${(props) => props.theme.accentColor};
   font-size: 48px;
+`;
+
+export const GoHome = styled.div`
+  border-radius: 30%;
+  opacity: 0.5;
+  background-color: #1e272e;
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  font-size: 20px;
+  transition: opacity 0.1s ease-in-out;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const LoadingContanier = styled.div`

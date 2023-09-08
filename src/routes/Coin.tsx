@@ -14,13 +14,15 @@ import {
   Header,
   Overview,
   Title,
+  GoHome,
 } from "../style";
-import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import Price from "./Price";
 import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchInfo, fetchPrice } from "../api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 interface CoinParams {
   coinId: string;
@@ -97,12 +99,17 @@ function Coin() {
     ["price", coinId],
     () => fetchPrice(coinId)
   );
-  const isLoading = infoLoading && priceLoading;
+  const isLoading = infoLoading || priceLoading;
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
   return (
     <Container>
       <Header>
+        <GoHome>
+          <Link to={"/"}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </Link>
+        </GoHome>
         <Title>
           {state?.name ? state.name : isLoading ? "WAIT..." : info?.name}
         </Title>
@@ -146,7 +153,7 @@ function Coin() {
           </Tabs>
           <Switch>
             <Route path={"/:coinId/chart"}>
-              <Chart />
+              <Chart coinId={coinId} />
             </Route>
             <Route path={"/:coinId/price"}>
               <Price />

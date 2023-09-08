@@ -1,10 +1,11 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Coin, CoinsList, Container, Header, Title } from "../style";
 import Loading from "../components/Loading";
+import { useQuery } from "react-query";
+import { fetchCoins } from "../api";
 
-interface CoinInterface {
+interface ICoins {
   id: string;
   name: string;
   symbol: string;
@@ -15,18 +16,7 @@ interface CoinInterface {
 }
 
 function Coins() {
-  const [coins, setCoins] = useState<CoinInterface[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const fetchCoins = async () => {
-    const response = await (
-      await fetch("https://api.coinpaprika.com/v1/coins")
-    ).json();
-    setCoins(response.slice(0, 100));
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    fetchCoins();
-  }, []);
+  const { isLoading, data: coins } = useQuery<ICoins[]>("coins", fetchCoins);
   return (
     <Container>
       <Header>
@@ -36,7 +26,7 @@ function Coins() {
         <Loading />
       ) : (
         <CoinsList>
-          {coins.map((coin) => (
+          {coins?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link
                 to={{

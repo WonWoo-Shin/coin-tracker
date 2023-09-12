@@ -4,7 +4,14 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const qureyClient = new QueryClient();
+const qureyClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
+    },
+  },
+});
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

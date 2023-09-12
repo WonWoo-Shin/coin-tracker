@@ -128,7 +128,7 @@ function Coin() {
               <span>{info?.symbol}</span>
             </div>
             <div>
-              <span>OPEN SOURCE</span>
+              <span>PRICE</span>
               <span>{info?.open_source ? "YES" : "NO"}</span>
             </div>
           </Overview>

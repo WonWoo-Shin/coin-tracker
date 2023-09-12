@@ -74,6 +74,8 @@ export const Header = styled.header`
 export const Title = styled.h1`
   color: ${(props) => props.theme.accentColor};
   font-size: 48px;
+  text-align: center;
+  max-width: 340px;
 `;
 
 export const GoHome = styled.div`
@@ -82,7 +84,7 @@ export const GoHome = styled.div`
   background-color: #1e272e;
   position: absolute;
   top: 32px;
-  left: 40px;
+  left: 0px;
   font-size: 20px;
   transition: opacity 0.1s ease-in-out;
   a {

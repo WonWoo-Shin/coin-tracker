@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Coin, CoinsList, Container, Header, Title } from "../style";
 import Loading from "../components/Loading";
@@ -36,6 +35,7 @@ function Coins() {
               >
                 <img
                   src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                  alt=""
                 />{" "}
                 {coin.name} &rarr;
               </Link>

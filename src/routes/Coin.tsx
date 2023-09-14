@@ -128,7 +128,7 @@ function Coin() {
               <span>{info?.symbol}</span>
             </div>
             <div>
-              <span>PRICE</span>
+              <span>OPEN SOURCE</span>
               <span>{info?.open_source ? "YES" : "NO"}</span>
             </div>
           </Overview>
@@ -156,7 +156,7 @@ function Coin() {
               <Chart coinId={coinId} />
             </Route>
             <Route path={"/:coinId/price"}>
-              <Price />
+              <Price coinId={coinId} />
             </Route>
           </Switch>
         </>

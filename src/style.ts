@@ -229,3 +229,34 @@ export const Tab = styled.div<{ $isActive: boolean }>`
     }
   }
 `;
+
+export const PriceContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 90px);
+  gap: 20px;
+`;
+
+export const CostItem = styled.div`
+  background-color: #1e272e;
+  border-radius: 15px;
+`;
+
+export const HighCost = styled(CostItem)`
+  grid-column: span 2;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    &:first-child {
+      line-height: 25px;
+      text-align: center;
+    }
+    &:last-child {
+      color: ${(props) => props.theme.accentColor};
+      font-weight: 600;
+      font-size: 25px;
+    }
+  }
+`;

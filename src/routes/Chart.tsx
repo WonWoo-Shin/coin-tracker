@@ -8,7 +8,7 @@ interface ChartProps {
 }
 
 interface IHistory {
-  time_open: string;
+  time_open: number;
   open: string;
   high: string;
   low: string;

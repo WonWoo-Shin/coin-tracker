@@ -1,7 +1,8 @@
 import { useQuery } from "react-query";
-import { fetchCoinHistory, fetchPrice } from "../api";
+import { fetchPrice } from "../api";
 import Loading from "../components/Loading";
-import { CostItem, HighCost, PriceContainer } from "../style";
+import { HighCost, PriceContainer } from "../style";
+import CostItem from "../components/CostItem";
 
 interface PriceProps {
   coinId: string;
@@ -50,12 +51,12 @@ function Price({ coinId }: PriceProps) {
             </span>
             <span>${USD?.ath_price.toFixed(3)}</span>
           </HighCost>
-          <CostItem></CostItem>
-          <CostItem></CostItem>
-          <CostItem></CostItem>
-          <CostItem></CostItem>
-          <CostItem></CostItem>
-          <CostItem></CostItem>
+          <CostItem time="1시간" price={USD?.percent_change_1h as number} />
+          <CostItem time="6시간" price={USD?.percent_change_6h as number} />
+          <CostItem time="12시간" price={USD?.percent_change_12h as number} />
+          <CostItem time="24시간" price={USD?.percent_change_24h as number} />
+          <CostItem time="7일" price={USD?.percent_change_7d as number} />
+          <CostItem time="30일" price={USD?.percent_change_30d as number} />
         </PriceContainer>
       )}
     </>

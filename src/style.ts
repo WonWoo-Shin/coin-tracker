@@ -237,12 +237,9 @@ export const PriceContainer = styled.div`
   gap: 20px;
 `;
 
-export const CostItem = styled.div`
+export const HighCost = styled.div`
   background-color: #1e272e;
   border-radius: 15px;
-`;
-
-export const HighCost = styled(CostItem)`
   grid-column: span 2;
   padding: 20px;
   display: flex;
@@ -256,6 +253,25 @@ export const HighCost = styled(CostItem)`
     &:last-child {
       color: ${(props) => props.theme.accentColor};
       font-weight: 600;
+      font-size: 25px;
+    }
+  }
+`;
+
+export const CostItemStyled = styled.div<{ percentColor: string }>`
+  background-color: #1e272e;
+  border-radius: 15px;
+  padding: 15px;
+  div {
+    &:first-child {
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 15px;
+    }
+    &:last-child {
+      color: ${(props) => props.percentColor};
+      display: flex;
+      justify-content: space-around;
       font-size: 25px;
     }
   }

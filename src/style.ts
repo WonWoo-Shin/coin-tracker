@@ -81,9 +81,9 @@ export const Title = styled.h1`
 export const GoHome = styled.div`
   border-radius: 30%;
   opacity: 0.5;
-  background-color: #1e272e;
+  background-color: ${(props) => props.theme.tabColor};
   position: absolute;
-  top: 32px;
+  top: 34px;
   left: 0px;
   font-size: 20px;
   transition: opacity 0.1s ease-in-out;
@@ -117,7 +117,7 @@ const loadingRotate = keyframes`
 export const LoaingCircle = styled.div`
   width: 50px;
   height: 50px;
-  background-color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.loadingColor};
   border-radius: 50%;
   position: relative;
   display: flex;
@@ -145,8 +145,7 @@ export const LoaingCircle = styled.div`
 export const CoinsList = styled.ul``;
 
 export const Coin = styled.li`
-  background-color: ${(props) => props.theme.textColor};
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.tabColor};
   margin-bottom: 20px;
   border-radius: 20px;
   transition: transform 0.1s ease-in-out;
@@ -170,7 +169,7 @@ export const Coin = styled.li`
 `;
 
 export const Overview = styled.div`
-  background-color: #1e272e;
+  background-color: ${(props) => props.theme.tabColor};
   border-radius: 15px;
   padding: 15px 10px;
   display: flex;
@@ -211,7 +210,7 @@ export const Tabs = styled.div`
 
 export const Tab = styled.div<{ $isActive: boolean }>`
   background-color: ${(props) =>
-    props.$isActive ? props.theme.accentColor : "#1e272e"};
+    props.$isActive ? props.theme.accentColor : props.theme.tabColor};
   border-radius: 15px;
   transition: all 0.1s ease-in-out;
   a {
@@ -222,7 +221,8 @@ export const Tab = styled.div<{ $isActive: boolean }>`
     justify-content: center;
     align-items: center;
     border: 2px solid
-      ${(props) => (props.$isActive ? props.theme.accentColor : "#1e272e")};
+      ${(props) =>
+        props.$isActive ? props.theme.accentColor : props.theme.tabColor};
     transition: inherit;
     &:hover {
       border: 2px solid ${(props) => props.theme.accentColor};
@@ -238,7 +238,7 @@ export const PriceContainer = styled.div`
 `;
 
 export const HighCost = styled.div`
-  background-color: #1e272e;
+  background-color: ${(props) => props.theme.tabColor};
   border-radius: 15px;
   grid-column: span 2;
   padding: 20px;
@@ -259,7 +259,7 @@ export const HighCost = styled.div`
 `;
 
 export const CostItemStyled = styled.div<{ percentColor: string }>`
-  background-color: #1e272e;
+  background-color: ${(props) => props.theme.tabColor};
   border-radius: 15px;
   padding: 15px;
   div {
@@ -275,4 +275,10 @@ export const CostItemStyled = styled.div<{ percentColor: string }>`
       font-size: 25px;
     }
   }
+`;
+
+export const ChartContainer = styled.div`
+  border-radius: 15px;
+  padding: 7px;
+  background-color: ${(props) => props.theme.tabColor};
 `;

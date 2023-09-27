@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { RecoilRoot } from "recoil";
 
 const qureyClient = new QueryClient({
   defaultOptions: {
@@ -15,6 +16,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <QueryClientProvider client={qureyClient}>
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </QueryClientProvider>
 );

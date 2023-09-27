@@ -57,12 +57,12 @@ a{
 }
 `;
 
-export const ThemeBtnStyle = styled.div<{ isDark: boolean }>`
+export const ThemeBtnStyle = styled.div<{ $isDark: boolean }>`
   font-size: 30px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: ${(props) => (props.isDark ? "#FFFFFF" : "#1e272e")};
+  background-color: ${(props) => (props.$isDark ? "#FFFFFF" : "#1e272e")};
   position: fixed;
   bottom: 20px;
   left: 20px;

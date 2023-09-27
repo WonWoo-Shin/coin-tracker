@@ -57,6 +57,20 @@ a{
 }
 `;
 
+export const ThemeBtnStyle = styled.div<{ isDark: boolean }>`
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: ${(props) => (props.isDark ? "#FFFFFF" : "#1e272e")};
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
@@ -212,7 +226,7 @@ export const Tab = styled.div<{ $isActive: boolean }>`
   background-color: ${(props) =>
     props.$isActive ? props.theme.accentColor : props.theme.tabColor};
   border-radius: 15px;
-  transition: all 0.1s ease-in-out;
+  /* transition: all 0.1s ease-in-out; */
   a {
     width: 160px;
     height: 40px;
@@ -223,7 +237,7 @@ export const Tab = styled.div<{ $isActive: boolean }>`
     border: 2px solid
       ${(props) =>
         props.$isActive ? props.theme.accentColor : props.theme.tabColor};
-    transition: inherit;
+    /* transition: border 0.1s ease-in-out; */
     &:hover {
       border: 2px solid ${(props) => props.theme.accentColor};
     }

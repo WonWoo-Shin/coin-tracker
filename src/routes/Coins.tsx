@@ -37,7 +37,7 @@ function Coins() {
                   src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
                   alt=""
                 />{" "}
-                {coin.name} &rarr;
+                {coin.name}
               </Link>
             </Coin>
           ))}

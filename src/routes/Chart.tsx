@@ -54,6 +54,7 @@ function Chart({ coinId }: ChartProps) {
                 toolbar: {
                   show: false,
                 },
+                foreColor: theme?.textColor,
                 background: theme?.tabColor,
               },
               grid: { show: false },

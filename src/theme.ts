@@ -11,7 +11,7 @@ export const darkTheme: DefaultTheme = {
 export const lightTheme: DefaultTheme = {
   textColor: "#1F2937",
   bgColor: "#E4E7EE",
-  accentColor: "#FF9500",
+  accentColor: "#0096FA",
   tabColor: "#FFFFFF",
   loadingColor: "#858585",
 };

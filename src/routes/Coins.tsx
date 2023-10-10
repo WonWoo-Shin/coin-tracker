@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
-import { Coin, CoinsList, Container, Header, Title } from "../style";
+import {
+  Box,
+  Coin,
+  CoinImg,
+  CoinList,
+  CoinsCotainer,
+  Container,
+  Header,
+  Logo,
+} from "../style";
 import Loading from "../components/Loading";
 import { useQuery } from "react-query";
 import { fetchCoins } from "../api";
+import mainLogo from "../img/logo.png";
 
 interface ICoins {
   id: string;
@@ -17,33 +27,42 @@ interface ICoins {
 function Coins() {
   const { isLoading, data: coins } = useQuery<ICoins[]>("coins", fetchCoins);
   return (
-    <Container>
-      <Header>
-        <Title>Coins</Title>
-      </Header>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <CoinsList>
-          {coins?.slice(0, 100).map((coin) => (
-            <Coin key={coin.id}>
-              <Link
-                to={{
-                  pathname: `/${coin.id}`,
-                  state: { name: coin.name },
-                }}
-              >
-                <img
-                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
-                  alt=""
-                />{" "}
-                {coin.name}
-              </Link>
-            </Coin>
-          ))}
-        </CoinsList>
-      )}
-    </Container>
+    <>
+      <Header></Header>
+      <Container>
+        <Box>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <CoinsCotainer>
+              <CoinList>
+                {coins?.slice(0, 100).map((coin) => (
+                  <Coin>
+                    <Link
+                      to={{
+                        pathname: `/${coin.id}`,
+                        state: { name: coin.name },
+                      }}
+                    >
+                      <CoinImg>
+                        <img
+                          src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                          alt=""
+                        />
+                      </CoinImg>
+                      <span>{coin.name}</span>
+                    </Link>
+                  </Coin>
+                ))}
+              </CoinList>
+            </CoinsCotainer>
+          )}
+        </Box>
+        <Box>
+          <Logo src={mainLogo} alt="" />
+        </Box>
+      </Container>
+    </>
   );
 }
 

@@ -13,7 +13,6 @@ import {
   Tab,
   Header,
   Overview,
-  Title,
   GoHome,
 } from "../style";
 import Loading from "../components/Loading";
@@ -110,9 +109,6 @@ function Coin() {
             <FontAwesomeIcon icon={faArrowLeft} />
           </Link>
         </GoHome>
-        <Title>
-          {state?.name ? state.name : isLoading ? "WAIT..." : info?.name}
-        </Title>
       </Header>
       {isLoading ? (
         <Loading />

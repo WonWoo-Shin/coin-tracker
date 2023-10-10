@@ -71,25 +71,95 @@ export const ThemeBtnStyle = styled.div<{ $isDark: boolean }>`
   align-items: center;
 `;
 
-export const Container = styled.div`
-  padding: 0px 20px;
-  max-width: 480px;
-  margin: 0 auto;
-`;
-
 export const Header = styled.header`
   height: 100px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 `;
 
-export const Title = styled.h1`
-  color: ${(props) => props.theme.accentColor};
-  font-size: 48px;
-  text-align: center;
-  max-width: 340px;
+export const Container = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const Box = styled.div`
+  width: 500px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ced6e0;
+  border-radius: 50px;
+`;
+
+export const Logo = styled.img`
+  height: 100px;
+`;
+
+export const CoinsCotainer = styled.div`
+  width: auto;
+  height: 90%;
+  overflow-y: scroll;
+  margin-right: 1px;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-button:vertical:start,
+  &::-webkit-scrollbar-button:vertical:end {
+    height: 7px;
+  }
+`;
+
+export const CoinList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+export const Coin = styled.li`
+  width: 100px;
+  height: 150px;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  span {
+    transition: transform 0.1s ease-in-out;
+  }
+  :hover {
+    div,
+    span {
+      transform: scale(1.1);
+    }
+  }
+`;
+
+export const CoinImg = styled.div`
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  background-color: ${(props) => props.theme.tabColor};
+  border-radius: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.1s ease-in-out;
+  img {
+    width: 70%;
+    height: 70%;
+  }
 `;
 
 export const GoHome = styled.div`
@@ -142,7 +212,7 @@ export const LoaingCircle = styled.div`
     &:first-child {
       width: 50%;
       height: 50%;
-      background-color: ${(props) => props.theme.bgColor};
+      background-color: #ced6e0;
       position: absolute;
       top: 0px;
       left: 0px;
@@ -150,34 +220,8 @@ export const LoaingCircle = styled.div`
     &:last-child {
       width: 60%;
       height: 60%;
-      background-color: ${(props) => props.theme.bgColor};
+      background-color: #ced6e0;
       border-radius: 50%;
-    }
-  }
-`;
-
-export const CoinsList = styled.ul``;
-
-export const Coin = styled.li`
-  background-color: ${(props) => props.theme.tabColor};
-  margin-bottom: 20px;
-  border-radius: 20px;
-  transition: transform 0.1s ease-in-out;
-  a {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    transition: color 0.1s ease-in-out;
-  }
-  img {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-  }
-  &:hover {
-    transform: scale(103%);
-    a {
-      color: ${(props) => props.theme.accentColor};
     }
   }
 `;

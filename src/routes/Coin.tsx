@@ -14,6 +14,9 @@ import {
   Header,
   Overview,
   GoHome,
+  Logo,
+  Box,
+  InfoContainer,
 } from "../style";
 import Loading from "../components/Loading";
 import Price from "./Price";
@@ -22,6 +25,7 @@ import { useQuery } from "react-query";
 import { fetchInfo, fetchPrice } from "../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import mainLogo from "../img/logo.png";
 
 interface CoinParams {
   coinId: string;
@@ -102,62 +106,25 @@ function Coin() {
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
   return (
-    <Container>
+    <>
       <Header>
-        <GoHome>
-          <Link to={"/"}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </Link>
-        </GoHome>
+        <Link to={"/"}>
+          <Logo src={mainLogo} alt="" height="50px" />
+        </Link>
       </Header>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <Overview>
-            <div>
-              <span>RANK</span>
-              <span>{info?.rank}</span>
-            </div>
-            <div>
-              <span>SYMBOL</span>
-              <span>{info?.symbol}</span>
-            </div>
-            <div>
-              <span>OPEN SOURCE</span>
-              <span>{info?.open_source ? "YES" : "NO"}</span>
-            </div>
-          </Overview>
-          <Description>{info?.description}</Description>
-          <Overview>
-            <div>
-              <span>TOTAL SUPPLY</span>
-              <span>{price?.total_supply}</span>
-            </div>
-            <div>
-              <span>MAX SUPPLY</span>
-              <span>{price?.max_supply}</span>
-            </div>
-          </Overview>
-          <Tabs>
-            <Tab $isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>CHART</Link>
-            </Tab>
-            <Tab $isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>PRICE</Link>
-            </Tab>
-          </Tabs>
-          <Switch>
-            <Route path={"/:coinId/chart"}>
-              <Chart coinId={coinId} />
-            </Route>
-            <Route path={"/:coinId/price"}>
-              <Price coinId={coinId} />
-            </Route>
-          </Switch>
-        </>
-      )}
-    </Container>
+      <Container>
+        <Box>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <InfoContainer>
+              <h1>{info?.name}</h1>
+            </InfoContainer>
+          )}
+        </Box>
+        <Box></Box>
+      </Container>
+    </>
   );
 }
 

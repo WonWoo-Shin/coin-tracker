@@ -226,6 +226,11 @@ export const LoaingCircle = styled.div`
   }
 `;
 
+export const InfoContainer = styled.div`
+  height: 100%;
+  padding: 20px 0;
+`;
+
 export const Overview = styled.div`
   background-color: ${(props) => props.theme.tabColor};
   border-radius: 15px;

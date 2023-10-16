@@ -28,7 +28,11 @@ function Coins() {
   const { isLoading, data: coins } = useQuery<ICoins[]>("coins", fetchCoins);
   return (
     <>
-      <Header></Header>
+      <Header>
+        <Link to={"/"}>
+          <Logo src={mainLogo} alt="" height="50px" />
+        </Link>
+      </Header>
       <Container>
         <Box>
           {isLoading ? (
@@ -59,7 +63,7 @@ function Coins() {
           )}
         </Box>
         <Box>
-          <Logo src={mainLogo} alt="" />
+          <Logo src={mainLogo} alt="" height="100px" />
         </Box>
       </Container>
     </>

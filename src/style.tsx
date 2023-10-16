@@ -73,15 +73,14 @@ export const ThemeBtnStyle = styled.div<{ $isDark: boolean }>`
 
 export const Header = styled.header`
   height: 100px;
-  margin-bottom: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  margin-left: 70px;
 `;
 
 export const Container = styled.div`
   max-width: 1400px;
+  height: calc(100vh - 100px);
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -94,17 +93,18 @@ export const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ced6e0;
+  background-color: ${(props) => props.theme.boxColor};
   border-radius: 50px;
 `;
 
-export const Logo = styled.img`
-  height: 100px;
+export const Logo = styled.img<{ height: string }>`
+  height: ${(props) => props.height};
 `;
 
 export const CoinsCotainer = styled.div`
   width: auto;
   height: 90%;
+  padding-top: 4px;
   overflow-y: scroll;
   margin-right: 1px;
   &::-webkit-scrollbar {

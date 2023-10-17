@@ -17,6 +17,7 @@ import {
   Logo,
   Box,
   InfoContainer,
+  Title,
 } from "../style";
 import Loading from "../components/Loading";
 import Price from "./Price";
@@ -118,7 +119,22 @@ function Coin() {
             <Loading />
           ) : (
             <InfoContainer>
-              <h1>{info?.name}</h1>
+              <Title>{info?.name}</Title>
+              <Overview>
+                <div>
+                  <span>RANK</span>
+                  <span>{info?.rank}</span>
+                </div>
+                <div>
+                  <span>SYMBOL</span>
+                  <span>{info?.symbol}</span>
+                </div>
+                <div>
+                  <span>OPEN SOURCE</span>
+                  <span>{info?.open_source ? "YES" : "NO"}</span>
+                </div>
+              </Overview>
+              <Description>{info?.description}</Description>
             </InfoContainer>
           )}
         </Box>

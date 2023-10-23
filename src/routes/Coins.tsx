@@ -6,13 +6,13 @@ import {
   CoinList,
   CoinsCotainer,
   Container,
-  Header,
   Logo,
 } from "../style";
 import Loading from "../components/Loading";
 import { useQuery } from "react-query";
 import { fetchCoins } from "../api";
-import mainLogo from "../img/logo.png";
+import { useRecoilValue } from "recoil";
+import { isDarkState } from "../atom";
 
 interface ICoins {
   id: string;
@@ -26,47 +26,47 @@ interface ICoins {
 
 function Coins() {
   const { isLoading, data: coins } = useQuery<ICoins[]>("coins", fetchCoins);
+  const isDark = useRecoilValue(isDarkState);
   return (
-    <>
-      <Header>
-        <Link to={"/"}>
-          <Logo src={mainLogo} alt="" height="50px" />
-        </Link>
-      </Header>
-      <Container>
-        <Box>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <CoinsCotainer>
-              <CoinList>
-                {coins?.slice(0, 100).map((coin) => (
-                  <Coin>
-                    <Link
-                      to={{
-                        pathname: `/${coin.id}`,
-                        state: { name: coin.name },
-                      }}
-                    >
-                      <CoinImg>
-                        <img
-                          src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
-                          alt=""
-                        />
-                      </CoinImg>
-                      <span>{coin.name}</span>
-                    </Link>
-                  </Coin>
-                ))}
-              </CoinList>
-            </CoinsCotainer>
-          )}
-        </Box>
-        <Box>
-          <Logo src={mainLogo} alt="" height="100px" />
-        </Box>
-      </Container>
-    </>
+    <Container>
+      <Box>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <CoinsCotainer>
+            <CoinList>
+              {coins?.slice(0, 100).map((coin) => (
+                <Coin key={coin.id}>
+                  <Link
+                    to={{
+                      pathname: `/${coin.id}`,
+                      state: { name: coin.name },
+                    }}
+                  >
+                    <CoinImg>
+                      <img
+                        src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                        alt=""
+                      />
+                    </CoinImg>
+                    <span>{coin.name}</span>
+                  </Link>
+                </Coin>
+              ))}
+            </CoinList>
+          </CoinsCotainer>
+        )}
+      </Box>
+      <Box>
+        {
+          <Logo
+            src={isDark ? "/logo_dark.png" : "/logo_light.png"}
+            alt=""
+            height="100px"
+          />
+        }
+      </Box>
+    </Container>
   );
 }
 

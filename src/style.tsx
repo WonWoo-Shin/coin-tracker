@@ -71,11 +71,24 @@ export const ThemeBtnStyle = styled.div<{ $isDark: boolean }>`
   align-items: center;
 `;
 
-export const Header = styled.header`
+export const HeaderStyle = styled.header`
   height: 100px;
   display: flex;
   align-items: center;
-  margin-left: 70px;
+  padding: 0 25px;
+`;
+
+export const MenuBar = styled.div`
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  color: #858585;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Container = styled.div`
@@ -95,6 +108,7 @@ export const Box = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.boxColor};
   border-radius: 50px;
+  position: relative;
 `;
 
 export const Logo = styled.img<{ height: string }>`
@@ -150,7 +164,7 @@ export const CoinImg = styled.div`
   width: 80px;
   height: 80px;
   margin-bottom: 10px;
-  background-color: ${(props) => props.theme.tabColor};
+  background-color: #fefdfe;
   border-radius: 40%;
   display: flex;
   justify-content: center;
@@ -186,7 +200,6 @@ export const GoHome = styled.div`
 export const LoadingContanier = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 50px;
 `;
 
 const loadingRotate = keyframes`
@@ -199,8 +212,8 @@ const loadingRotate = keyframes`
 `;
 
 export const LoaingCircle = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   background-color: ${(props) => props.theme.loadingColor};
   border-radius: 50%;
   position: relative;
@@ -212,15 +225,15 @@ export const LoaingCircle = styled.div`
     &:first-child {
       width: 50%;
       height: 50%;
-      background-color: #ced6e0;
+      background-color: ${(props) => props.theme.boxColor};
       position: absolute;
       top: 0px;
       left: 0px;
     }
     &:last-child {
-      width: 60%;
-      height: 60%;
-      background-color: #ced6e0;
+      width: 75%;
+      height: 75%;
+      background-color: ${(props) => props.theme.boxColor};
       border-radius: 50%;
     }
   }
@@ -236,16 +249,18 @@ export const Title = styled.h1`
   color: ${(props) => props.theme.accentColor};
   font-size: 40px;
   text-align: center;
+  position: absolute;
+  top: 20px;
 `;
 
-export const Overview = styled.div`
+export const OverviewTop = styled.div`
   background-color: ${(props) => props.theme.tabColor};
   border-radius: 15px;
   padding: 15px 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 70px;
   div {
     width: 33%;
     display: flex;
@@ -265,11 +280,28 @@ export const Overview = styled.div`
   }
 `;
 
-export const Description = styled.p`
+export const Overview = styled(OverviewTop)`
+  margin-top: 20px;
+`;
+
+export const Description = styled.div`
+  height: 400px;
   margin-top: 20px;
   padding: 0 10px;
   line-height: 25px;
   font-size: 18px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-button:vertical:start,
+  &::-webkit-scrollbar-button:vertical:end {
+    height: 7px;
+  }
 `;
 
 export const Tabs = styled.div`
@@ -298,6 +330,14 @@ export const Tab = styled.div<{ $isActive: boolean }>`
       border: 2px solid ${(props) => props.theme.accentColor};
     }
   }
+`;
+
+export const PriceWrap = styled.div`
+  width: 100%;
+  height: calc(100% - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PriceContainer = styled.div`

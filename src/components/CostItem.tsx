@@ -19,7 +19,7 @@ function CostItem({ time, price }: CostItemProps) {
         <span>{price.toFixed(2)}%</span>
         <FontAwesomeIcon
           icon={isUp ? faArrowTrendUp : faArrowTrendDown}
-          style={isUp ? { color: "#DF7D46" } : { color: "#3C90EB" }}
+          color={isUp ? "#DF7D46" : "#3C90EB"}
         />
       </div>
     </CostItemStyled>

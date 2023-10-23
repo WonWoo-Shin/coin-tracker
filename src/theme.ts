@@ -13,7 +13,7 @@ export const darkTheme: DefaultTheme = {
   textColor: "#f5f6fa",
   bgColor: "#1F1F1F",
   accentColor: "#8c7ae6",
-  tabColor: "#1e272e",
+  tabColor: "#4B4B4B",
   boxColor: "#323232",
   loadingColor: "#f5f6fa",
 };

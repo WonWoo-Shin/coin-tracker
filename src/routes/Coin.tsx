@@ -11,22 +11,17 @@ import {
   Description,
   Tabs,
   Tab,
-  Header,
   Overview,
-  GoHome,
-  Logo,
   Box,
   InfoContainer,
   Title,
+  OverviewTop,
 } from "../style";
 import Loading from "../components/Loading";
 import Price from "./Price";
 import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchInfo, fetchPrice } from "../api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import mainLogo from "../img/logo.png";
 
 interface CoinParams {
   coinId: string;
@@ -107,40 +102,64 @@ function Coin() {
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
   return (
-    <>
-      <Header>
-        <Link to={"/"}>
-          <Logo src={mainLogo} alt="" height="50px" />
-        </Link>
-      </Header>
-      <Container>
-        <Box>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <InfoContainer>
-              <Title>{info?.name}</Title>
-              <Overview>
-                <div>
-                  <span>RANK</span>
-                  <span>{info?.rank}</span>
-                </div>
-                <div>
-                  <span>SYMBOL</span>
-                  <span>{info?.symbol}</span>
-                </div>
-                <div>
-                  <span>OPEN SOURCE</span>
-                  <span>{info?.open_source ? "YES" : "NO"}</span>
-                </div>
-              </Overview>
-              <Description>{info?.description}</Description>
-            </InfoContainer>
-          )}
-        </Box>
-        <Box></Box>
-      </Container>
-    </>
+    <Container>
+      <Box>
+        <Title>{info?.name}</Title>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <InfoContainer>
+            <OverviewTop>
+              <div>
+                <span>RANK</span>
+                <span>{info?.rank}</span>
+              </div>
+              <div>
+                <span>SYMBOL</span>
+                <span>{info?.symbol}</span>
+              </div>
+              <div>
+                <span>OPEN SOURCE</span>
+                <span>{info?.open_source ? "YES" : "NO"}</span>
+              </div>
+            </OverviewTop>
+            <Overview>
+              <div>
+                <span>TOTAL SUPPLY</span>
+                <span>{price?.total_supply}</span>
+              </div>
+              <div>
+                <span>MAX SUPPLY</span>
+                <span>{price?.max_supply}</span>
+              </div>
+            </Overview>
+            <Description>
+              <p>{info?.description}</p>
+            </Description>
+          </InfoContainer>
+        )}
+      </Box>
+      <Box>
+        <InfoContainer>
+          <Tabs>
+            <Tab $isActive={chartMatch !== null}>
+              <Link to={`/${coinId}/chart`}>CHART</Link>
+            </Tab>
+            <Tab $isActive={priceMatch !== null}>
+              <Link to={`/${coinId}/price`}>PRICE</Link>
+            </Tab>
+          </Tabs>
+          <Switch>
+            <Route path={"/:coinId/chart"}>
+              <Chart coinId={coinId} />
+            </Route>
+            <Route path={"/:coinId/price"}>
+              <Price coinId={coinId} />
+            </Route>
+          </Switch>
+        </InfoContainer>
+      </Box>
+    </Container>
   );
 }
 

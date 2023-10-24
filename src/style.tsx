@@ -305,7 +305,7 @@ export const Description = styled.div`
 `;
 
 export const Tabs = styled.div`
-  margin: 25px 0;
+  margin-bottom: 100px;
   display: flex;
   justify-content: space-around;
 `;
@@ -329,6 +329,14 @@ export const Tab = styled.div<{ $isActive: boolean }>`
     &:hover {
       border: 2px solid ${(props) => props.theme.accentColor};
     }
+  }
+`;
+
+export const PriceError = styled.div`
+  text-align: center;
+  div {
+    margin-top: 30px;
+    font-size: 20px;
   }
 `;
 
@@ -368,7 +376,7 @@ export const HighCost = styled.div`
   }
 `;
 
-export const CostItemStyled = styled.div<{ percentColor: string }>`
+export const CostItemStyled = styled.div<{ $percentColor: string }>`
   background-color: ${(props) => props.theme.tabColor};
   border-radius: 15px;
   padding: 15px;
@@ -379,7 +387,7 @@ export const CostItemStyled = styled.div<{ percentColor: string }>`
       font-size: 15px;
     }
     &:last-child {
-      color: ${(props) => props.percentColor};
+      color: ${(props) => props.$percentColor};
       display: flex;
       justify-content: space-around;
       font-size: 25px;

@@ -104,7 +104,7 @@ function Coin() {
   return (
     <Container>
       <Box>
-        <Title>{info?.name}</Title>
+        <Title>{state?.name ?? info?.name}</Title>
         {isLoading ? (
           <Loading />
         ) : (

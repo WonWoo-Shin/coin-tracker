@@ -43,23 +43,21 @@ function Price({ coinId }: PriceProps) {
       {isLoading ? (
         <Loading />
       ) : (
-        <PriceWrap>
-          <PriceContainer>
-            <HighCost>
-              <span>
-                {new Date(date).toLocaleString()} <br />
-                최고가 달성
-              </span>
-              <span>${USD?.ath_price.toFixed(3)}</span>
-            </HighCost>
-            <CostItem time="1시간" price={USD?.percent_change_1h as number} />
-            <CostItem time="6시간" price={USD?.percent_change_6h as number} />
-            <CostItem time="12시간" price={USD?.percent_change_12h as number} />
-            <CostItem time="24시간" price={USD?.percent_change_24h as number} />
-            <CostItem time="7일" price={USD?.percent_change_7d as number} />
-            <CostItem time="30일" price={USD?.percent_change_30d as number} />
-          </PriceContainer>
-        </PriceWrap>
+        <PriceContainer>
+          <HighCost>
+            <span>
+              {new Date(date).toLocaleString()} <br />
+              최고가 달성
+            </span>
+            <span>${USD?.ath_price.toFixed(3)}</span>
+          </HighCost>
+          <CostItem time="1시간" price={USD?.percent_change_1h as number} />
+          <CostItem time="6시간" price={USD?.percent_change_6h as number} />
+          <CostItem time="12시간" price={USD?.percent_change_12h as number} />
+          <CostItem time="24시간" price={USD?.percent_change_24h as number} />
+          <CostItem time="7일" price={USD?.percent_change_7d as number} />
+          <CostItem time="30일" price={USD?.percent_change_30d as number} />
+        </PriceContainer>
       )}
     </>
   );

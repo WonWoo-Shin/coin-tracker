@@ -4,7 +4,9 @@ import Loading from "../components/Loading";
 import ApexChart from "react-apexcharts";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
-import { ChartContainer } from "../style";
+import { ChartContainer, PriceError } from "../style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
 
 interface ChartProps {
   coinId: string;
@@ -22,11 +24,17 @@ function Chart({ coinId }: ChartProps) {
   const { isLoading, data } = useQuery<IHistory[]>(["history", coinId], () =>
     fetchCoinHistory(coinId)
   );
+  const error = data?.length == undefined;
   const theme = useContext(ThemeContext);
   return (
-    <div>
+    <>
       {isLoading ? (
         <Loading />
+      ) : error ? (
+        <PriceError>
+          <FontAwesomeIcon icon={faFaceSadTear} fontSize={"80px"} />
+          <div>Chart data not found</div>
+        </PriceError>
       ) : (
         <ChartContainer>
           <ApexChart
@@ -78,7 +86,7 @@ function Chart({ coinId }: ChartProps) {
           />
         </ChartContainer>
       )}
-    </div>
+    </>
   );
 }
 

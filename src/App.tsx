@@ -1,6 +1,7 @@
 import Router from "./Router";
 import "./App.css";
 import { GlobalStyle } from "./style";
+import { ReactQueryDevtools } from "react-query/devtools";
 import ThemeBtn from "./components/ThemeBtn";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./theme";
@@ -13,6 +14,7 @@ function App() {
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Router />
+      <ReactQueryDevtools />
       <ThemeBtn />
     </ThemeProvider>
   );

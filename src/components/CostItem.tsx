@@ -13,7 +13,7 @@ interface CostItemProps {
 function CostItem({ time, price }: CostItemProps) {
   const isUp = price > 0;
   return (
-    <CostItemStyled percentColor={isUp ? "#DF7D46" : "#3C90EB"}>
+    <CostItemStyled $percentColor={isUp ? "#DF7D46" : "#3C90EB"}>
       <div>{`${time} 전보다`}</div>
       <div>
         <span>{price.toFixed(2)}%</span>

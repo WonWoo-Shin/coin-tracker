@@ -57,6 +57,15 @@ a{
 }
 `;
 
+export const SideMenuStyle = styled.aside`
+  width: 250px;
+  height: 100vh;
+  border-right: 2px solid ${(props) => props.theme.boxColor};
+  position: absolute;
+  top: 0;
+  transition: width 0.3s ease-in-out;
+`;
+
 export const ThemeBtnStyle = styled.div<{ $isDark: boolean }>`
   font-size: 30px;
   width: 60px;
@@ -78,17 +87,30 @@ export const HeaderStyle = styled.header`
   padding: 0 25px;
 `;
 
+export const MainIcon = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 24px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+`;
+
 export const MenuBar = styled.div`
   cursor: pointer;
   width: 40px;
   height: 40px;
-  margin-right: 20px;
+  margin-right: 10px;
   color: #858585;
   font-size: 20px;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const Main = styled.main`
+  transition: margin-left 0.3s ease-in-out;
 `;
 
 export const Container = styled.div`
@@ -338,14 +360,6 @@ export const PriceError = styled.div`
     margin-top: 30px;
     font-size: 20px;
   }
-`;
-
-export const PriceWrap = styled.div`
-  width: 100%;
-  height: calc(100% - 90px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const PriceContainer = styled.div`

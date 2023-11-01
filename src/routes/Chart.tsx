@@ -24,7 +24,7 @@ function Chart({ coinId }: ChartProps) {
   const { isLoading, data } = useQuery<IHistory[]>(["history", coinId], () =>
     fetchCoinHistory(coinId)
   );
-  const error = data?.length == undefined;
+  const error = data?.length === undefined;
   const theme = useContext(ThemeContext);
   return (
     <>

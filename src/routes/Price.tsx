@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchPrice } from "../api";
 import Loading from "../components/Loading";
-import { HighCost, PriceContainer, PriceWrap } from "../style";
+import { HighCost, PriceContainer } from "../style";
 import CostItem from "../components/CostItem";
 
 interface PriceProps {

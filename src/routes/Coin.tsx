@@ -6,22 +6,21 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-import {
-  Container,
-  Description,
-  Tabs,
-  Tab,
-  Overview,
-  Box,
-  InfoContainer,
-  Title,
-  OverviewTop,
-} from "../style";
+import { Container, Box } from "../style/Main";
 import Loading from "../components/Loading";
 import Price from "./Price";
 import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchInfo, fetchPrice } from "../api";
+import {
+  Description,
+  InfoContainer,
+  Overview,
+  OverviewTop,
+  Tab,
+  Tabs,
+  Title,
+} from "../style/CoinDetail";
 
 interface CoinParams {
   coinId: string;

@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
 import { fetchPrice } from "../api";
 import Loading from "../components/Loading";
-import { HighCost, PriceContainer } from "../style";
 import CostItem from "../components/CostItem";
+import { HighCost, PriceContainer } from "../style/Price";
 
 interface PriceProps {
   coinId: string;

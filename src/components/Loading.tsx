@@ -1,4 +1,4 @@
-import { LoadingContanier, LoaingCircle } from "../style";
+import { LoadingContanier, LoaingCircle } from "../style/Main";
 
 function Loading() {
   return (

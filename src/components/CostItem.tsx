@@ -3,7 +3,7 @@ import {
   faArrowTrendUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CostItemStyled } from "../style";
+import { CostItemStyled } from "../style/Price";
 
 interface CostItemProps {
   time: string;

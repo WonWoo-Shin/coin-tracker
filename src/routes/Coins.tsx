@@ -1,18 +1,11 @@
 import { Link } from "react-router-dom";
-import {
-  Box,
-  Coin,
-  CoinImg,
-  CoinList,
-  CoinsCotainer,
-  Container,
-  Logo,
-} from "../style";
+import { Box, Container, Logo } from "../style/Main";
 import Loading from "../components/Loading";
 import { useQuery } from "react-query";
 import { fetchCoins } from "../api";
 import { useRecoilValue } from "recoil";
 import { isDarkState } from "../atom";
+import { Coin, CoinImg, CoinList, CoinsCotainer } from "../style/CoinList";
 
 interface ICoins {
   id: string;

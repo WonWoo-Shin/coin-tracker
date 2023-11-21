@@ -4,9 +4,9 @@ import Loading from "../components/Loading";
 import ApexChart from "react-apexcharts";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
-import { ChartContainer, PriceError } from "../style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
+import { ChartContainer, PriceError } from "../style/Price";
 
 interface ChartProps {
   coinId: string;

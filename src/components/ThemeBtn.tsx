@@ -1,18 +1,21 @@
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { ThemeBtnStyle } from "../style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRecoilState } from "recoil";
 import { isDarkState } from "../atom";
+import { ThemeBtnContainer, ThemeBtnInput } from "../style/SideMenu";
 
 function ThemeBtn() {
   const [isDark, setIsDark] = useRecoilState(isDarkState);
   return (
-    <ThemeBtnStyle onClick={() => setIsDark((prev) => !prev)} $isDark={isDark}>
-      <FontAwesomeIcon
-        icon={isDark ? faSun : faMoon}
-        style={isDark ? { color: "#FF9500" } : { color: "#8c7ae6" }}
+    <ThemeBtnContainer>
+      <ThemeBtnInput
+        type="checkbox"
+        onClick={() => setIsDark((prev) => !prev)}
+        $isDark={isDark}
       />
-    </ThemeBtnStyle>
+      <FontAwesomeIcon icon={faMoon} />
+      <FontAwesomeIcon icon={faSun} />
+    </ThemeBtnContainer>
   );
 }
 

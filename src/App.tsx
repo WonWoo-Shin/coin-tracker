@@ -1,12 +1,12 @@
 import Router from "./Router";
 import "./App.css";
-import { GlobalStyle, Main } from "./style";
-import ThemeBtn from "./components/ThemeBtn";
+import { Main } from "./style/Main";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./theme";
 import { useRecoilValue } from "recoil";
 import { isDarkState, isSideActiveState } from "./atom";
 import SideMenu from "./components/SideMenu";
+import { GlobalStyle } from "./style/GlobalStyle";
 // import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
       <Main style={{ marginLeft: isSideActive ? "250px" : 0 }}>
         <Router />
       </Main>
-      <ThemeBtn />
       {/* <ReactQueryDevtools /> */}
     </ThemeProvider>
   );

@@ -30,7 +30,7 @@ export const ThemeBtnContainer = styled.div`
   color: #000000;
 `;
 
-export const ThemeBtnInput = styled.input<{ $isDark: boolean }>`
+export const ThemeBtnInput = styled.input`
   appearance: none;
   position: absolute;
   top: 0;

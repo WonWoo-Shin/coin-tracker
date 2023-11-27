@@ -5,7 +5,14 @@ import { useQuery } from "react-query";
 import { fetchCoins } from "../api";
 import { useRecoilValue } from "recoil";
 import { isDarkState } from "../atom";
-import { Coin, CoinImg, CoinList, CoinsCotainer } from "../style/CoinList";
+import {
+  Coin,
+  CoinImg,
+  CoinList,
+  CoinsCotainer,
+  Search,
+} from "../style/CoinList";
+import { useState } from "react";
 
 interface ICoins {
   id: string;
@@ -20,34 +27,52 @@ interface ICoins {
 function Coins() {
   const { isLoading, data: coins } = useQuery<ICoins[]>("coins", fetchCoins);
   const isDark = useRecoilValue(isDarkState);
+  const [search, setSearch] = useState("");
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setSearch(event.currentTarget.value);
+  };
   return (
     <Container>
       <Box>
         {isLoading ? (
           <Loading />
         ) : (
-          <CoinsCotainer>
-            <CoinList>
-              {coins?.slice(0, 100).map((coin) => (
-                <Coin key={coin.id}>
-                  <Link
-                    to={{
-                      pathname: `/${coin.id}`,
-                      state: { name: coin.name },
-                    }}
-                  >
-                    <CoinImg>
-                      <img
-                        src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
-                        alt=""
-                      />
-                    </CoinImg>
-                    <span>{coin.name}</span>
-                  </Link>
-                </Coin>
-              ))}
-            </CoinList>
-          </CoinsCotainer>
+          <>
+            <Search>
+              <input type="text" placeholder="Search" onChange={onChange} />
+            </Search>
+            <CoinsCotainer>
+              <CoinList>
+                {coins
+                  ?.slice(0, 100)
+                  .filter((coin) =>
+                    search == ""
+                      ? coin
+                      : coin.name.toLowerCase().includes(search.toLowerCase())
+                      ? coin
+                      : null
+                  )
+                  .map((coin) => (
+                    <Coin key={coin.id}>
+                      <Link
+                        to={{
+                          pathname: `/${coin.id}/chart`,
+                          state: { name: coin.name },
+                        }}
+                      >
+                        <CoinImg>
+                          <img
+                            src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                            alt=""
+                          />
+                        </CoinImg>
+                        <span>{coin.name}</span>
+                      </Link>
+                    </Coin>
+                  ))}
+              </CoinList>
+            </CoinsCotainer>
+          </>
         )}
       </Box>
       <Box>

@@ -17,6 +17,7 @@ export const Box = styled.div`
   width: 500px;
   height: 700px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.boxColor};

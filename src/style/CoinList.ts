@@ -1,11 +1,31 @@
 import styled from "styled-components";
 
+export const Search = styled.div`
+  margin-bottom: 30px;
+  padding: 0 20px;
+  border-radius: 20px;
+  width: 90%;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.05);
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    color: gray;
+    &:focus {
+      outline: none;
+    }
+  }
+`;
+
 export const CoinsCotainer = styled.div`
-  width: auto;
-  height: 90%;
+  width: 100%;
+  height: 80%;
   padding-top: 4px;
   overflow-y: scroll;
-  margin-right: 1px;
+  /* margin-right: 1px; */
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -20,9 +40,9 @@ export const CoinsCotainer = styled.div`
 `;
 
 export const CoinList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template: auto / repeat(4, 1fr);
+  place-items: center;
 `;
 
 export const Coin = styled.li`

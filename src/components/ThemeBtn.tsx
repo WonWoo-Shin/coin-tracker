@@ -1,16 +1,22 @@
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { isDarkState } from "../atom";
 import { ThemeBtnContainer, ThemeBtnInput } from "../style/SideMenu";
 
 function ThemeBtn() {
-  const setIsDark = useSetRecoilState(isDarkState);
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setIsDark(event.currentTarget.checked);
+  const [isDark, setIsDark] = useRecoilState(isDarkState);
+  const btn = document.getElementById("btn") as HTMLInputElement;
+  if (btn != null) {
+    btn.checked = isDark ? true : false;
+  }
   return (
     <ThemeBtnContainer>
-      <ThemeBtnInput type="checkbox" onChange={onChange} />
+      <ThemeBtnInput
+        type="checkbox"
+        onChange={() => setIsDark(btn.checked)}
+        id="btn"
+      />
       <FontAwesomeIcon icon={faSun} />
       <FontAwesomeIcon icon={faMoon} />
     </ThemeBtnContainer>

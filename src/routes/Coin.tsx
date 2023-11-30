@@ -6,7 +6,7 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-import { Container, Box } from "../style/Main";
+import { Container, Box, Error } from "../style/Main";
 import Loading from "../components/Loading";
 import Price from "./Price";
 import Chart from "./Chart";
@@ -21,6 +21,8 @@ import {
   Tabs,
   Title,
 } from "../style/CoinDetail";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
 
 interface CoinParams {
   coinId: string;
@@ -50,6 +52,7 @@ interface InfoData {
   hash_algorithm: string;
   first_data_at: string;
   last_data_at: string;
+  error: string;
 }
 
 interface PriceData {
@@ -84,6 +87,7 @@ interface PriceData {
       volume_24h_change_24h: number;
     };
   };
+  error: string;
 }
 
 function Coin() {
@@ -98,66 +102,82 @@ function Coin() {
     () => fetchPrice(coinId)
   );
   const isLoading = infoLoading || priceLoading;
-  const priceMatch = useRouteMatch("/:coinId/price");
-  const chartMatch = useRouteMatch("/:coinId/chart");
+  const ERROR_MESSAGE = "id not found";
+  const isError =
+    info?.error === ERROR_MESSAGE || price?.error === ERROR_MESSAGE;
+  const priceMatch = useRouteMatch(`${process.env.PUBLIC_URL}/:coinId/price`);
+  const chartMatch = useRouteMatch(`${process.env.PUBLIC_URL}/:coinId/chart`);
   return (
     <Container>
-      <Box>
-        <Title>{state?.name ?? info?.name}</Title>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <InfoContainer>
-            <OverviewTop>
-              <div>
-                <span>RANK</span>
-                <span>{info?.rank}</span>
-              </div>
-              <div>
-                <span>SYMBOL</span>
-                <span>{info?.symbol}</span>
-              </div>
-              <div>
-                <span>OPEN SOURCE</span>
-                <span>{info?.open_source ? "YES" : "NO"}</span>
-              </div>
-            </OverviewTop>
-            <Overview>
-              <div>
-                <span>TOTAL SUPPLY</span>
-                <span>{price?.total_supply}</span>
-              </div>
-              <div>
-                <span>MAX SUPPLY</span>
-                <span>{price?.max_supply}</span>
-              </div>
-            </Overview>
-            <Description>
-              <p>{info?.description}</p>
-            </Description>
-          </InfoContainer>
-        )}
-      </Box>
-      <Box>
-        <InfoContainer>
-          <Tabs>
-            <Tab $isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>CHART</Link>
-            </Tab>
-            <Tab $isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>PRICE</Link>
-            </Tab>
-          </Tabs>
-          <Switch>
-            <Route path={"/:coinId/chart"}>
-              <Chart coinId={coinId} />
-            </Route>
-            <Route path={"/:coinId/price"}>
-              <Price coinId={coinId} />
-            </Route>
-          </Switch>
-        </InfoContainer>
-      </Box>
+      {isError ? (
+        <Error>
+          <FontAwesomeIcon icon={faFaceSadTear} fontSize={"200px"} />
+          <div>404 Not Found</div>
+        </Error>
+      ) : (
+        <>
+          <Box>
+            <Title>{state?.name ?? info?.name}</Title>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <InfoContainer>
+                <OverviewTop>
+                  <div>
+                    <span>RANK</span>
+                    <span>{info?.rank}</span>
+                  </div>
+                  <div>
+                    <span>SYMBOL</span>
+                    <span>{info?.symbol}</span>
+                  </div>
+                  <div>
+                    <span>OPEN SOURCE</span>
+                    <span>{info?.open_source ? "YES" : "NO"}</span>
+                  </div>
+                </OverviewTop>
+                <Overview>
+                  <div>
+                    <span>TOTAL SUPPLY</span>
+                    <span>{price?.total_supply}</span>
+                  </div>
+                  <div>
+                    <span>MAX SUPPLY</span>
+                    <span>{price?.max_supply}</span>
+                  </div>
+                </Overview>
+                <Description>
+                  <p>{info?.description}</p>
+                </Description>
+              </InfoContainer>
+            )}
+          </Box>
+          <Box>
+            <InfoContainer>
+              <Tabs>
+                <Tab $isActive={chartMatch !== null}>
+                  <Link to={`${process.env.PUBLIC_URL}/${coinId}/chart`}>
+                    CHART
+                  </Link>
+                </Tab>
+                <Tab $isActive={priceMatch !== null}>
+                  <Link to={`${process.env.PUBLIC_URL}/${coinId}/price`}>
+                    PRICE
+                  </Link>
+                </Tab>
+              </Tabs>
+              <Switch>
+                <Route path={`${process.env.PUBLIC_URL}/:coinId/chart`}>
+                  <Chart coinId={coinId} />
+                </Route>
+                <Route path={`${process.env.PUBLIC_URL}/:coinId/price`}>
+                  <Price coinId={coinId} />
+                </Route>
+              </Switch>
+            </InfoContainer>
+          </Box>
+        </>
+      )}
     </Container>
   );
 }

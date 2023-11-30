@@ -6,7 +6,8 @@ import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
-import { ChartContainer, PriceError } from "../style/Price";
+import { ChartContainer } from "../style/Price";
+import { Error } from "../style/Main";
 
 interface ChartProps {
   coinId: string;
@@ -24,17 +25,17 @@ function Chart({ coinId }: ChartProps) {
   const { isLoading, data } = useQuery<IHistory[]>(["history", coinId], () =>
     fetchCoinHistory(coinId)
   );
-  const error = data?.length === undefined;
+  const isError = data?.length === undefined;
   const theme = useContext(ThemeContext);
   return (
     <>
       {isLoading ? (
         <Loading />
-      ) : error ? (
-        <PriceError>
+      ) : isError ? (
+        <Error>
           <FontAwesomeIcon icon={faFaceSadTear} fontSize={"80px"} />
           <div>Chart data not found</div>
-        </PriceError>
+        </Error>
       ) : (
         <ChartContainer>
           <ApexChart

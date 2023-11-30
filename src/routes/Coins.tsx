@@ -46,7 +46,7 @@ function Coins() {
                 {coins
                   ?.slice(0, 100)
                   .filter((coin) =>
-                    search == ""
+                    search === ""
                       ? coin
                       : coin.name.toLowerCase().includes(search.toLowerCase())
                       ? coin
@@ -56,7 +56,7 @@ function Coins() {
                     <Coin key={coin.id}>
                       <Link
                         to={{
-                          pathname: `/${coin.id}/chart`,
+                          pathname: `${process.env.PUBLIC_URL}/${coin.id}/chart`,
                           state: { name: coin.name },
                         }}
                       >
@@ -78,7 +78,11 @@ function Coins() {
       <Box>
         {
           <Logo
-            src={isDark ? "/logo_dark.png" : "/logo_light.png"}
+            src={
+              isDark
+                ? `${process.env.PUBLIC_URL}/logo_dark.png`
+                : `${process.env.PUBLIC_URL}/logo_light.png`
+            }
             alt=""
             height="100px"
           />

@@ -15,9 +15,13 @@ function Header() {
         <MenuBar onClick={() => setIsSideActive((prev) => !prev)}>
           <FontAwesomeIcon icon={faBars} />
         </MenuBar>
-        <Link to={"/"}>
+        <Link to={`${process.env.PUBLIC_URL}/`}>
           <Logo
-            src={isDark ? "/logo_dark.png" : "/logo_light.png"}
+            src={
+              isDark
+                ? `${process.env.PUBLIC_URL}/logo_dark.png`
+                : `${process.env.PUBLIC_URL}/logo_light.png`
+            }
             alt=""
             height="50px"
           />

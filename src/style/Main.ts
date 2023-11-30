@@ -11,11 +11,13 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const Box = styled.div`
   width: 500px;
   height: 700px;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,5 +70,13 @@ export const LoaingCircle = styled.div`
       background-color: ${(props) => props.theme.boxColor};
       border-radius: 50%;
     }
+  }
+`;
+
+export const Error = styled.div`
+  text-align: center;
+  div {
+    margin-top: 30px;
+    font-size: 20px;
   }
 `;
